@@ -32,7 +32,7 @@ def printOnConsole(string):
 def senderstream_BMSdata(streamcount):
     for i in range(streamcount):
         formatOutputString(getADCsensorvalue(),getBatteryTemperatureinCelcius())
-    return True
+    return streamcount
 
 if __name__ == "__main__":
     senderstream_BMSdata(MAX_NO_OF_DATATOBESTREAMED)
