@@ -62,7 +62,7 @@ std::vectot<string> getInputDataForTesting()
 	return inputDataForTesting;
 }
 
-TEST_CASE("Test Receiver::extractBattertyAmpsReadings")
+TEST_CASE("Test Receiver::extractBattertyAmpsReadings and extractBattertyTemperatureReadings")
 {
    Receiver receiver;
    std::vectot<string> inputDataList = getInputDataForTesting();
@@ -77,16 +77,6 @@ TEST_CASE("Test Receiver::extractBattertyAmpsReadings")
    REQUIRE(batteryAmpsList[2] == 3);
    REQUIRE(batteryAmpsList[3] == 1);
    REQUIRE(batteryAmpsList[4] == 4);
-}
-
-TEST_CASE("Test Receiver::extractBattertyTemperatureReadings")
-{
-   Receiver receiver;
-   std::vectot<string> inputDataList = getInputDataForTesting();
-   for(int index = 0 ; index < inputDataList.size(); index++)
-   {
-	   receiver.setReceiverData(inputDataList[index]);
-   }
 
    std::vector<int> batteryTemperatureList = receiver.extractBattertyTemperatureReadings();
    assert(batteryTemperatureList.size() == 5);
