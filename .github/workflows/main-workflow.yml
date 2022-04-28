@@ -3,10 +3,8 @@ name: Build and Run
 on: [push, pull_request]
 
 jobs:
-    build-sender:
-
+  build-reciever:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -26,18 +24,17 @@ jobs:
           flake8 . --count --exit-zero --max-line-length=80 --ignore=E111,E121,E126 --statistics
       - name: Run and collect coverage
         run: |
-          coverage run --branch sendernode_test.py
+          coverage run --branch receiver_test.py
           coverage html
           coverage report
       - name: Upload coverage
         uses: actions/upload-artifact@v2
         with:
-          name: coverage
+          name: coverage-reciever
           path: ./htmlcov
           retention-days: 21
+  build-sender:
 
-    build-reciever:
-    
     runs-on: ubuntu-latest
 
     steps:
@@ -49,7 +46,7 @@ jobs:
         sudo apt-get install -y gcovr
     - name: build
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker *.c*
-      
+
     - name: run
       run: ./testchecker
 
