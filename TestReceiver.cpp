@@ -51,9 +51,9 @@ TEST_CASE("Test Receiver::computeStatics")
    REQUIRE(receiver.m_batteryTemperatureStats.m_averageValue == 99.6);
 }
 
-std::vectot<string> getInputDataForTesting()
+std::vector<string> getInputDataForTesting()
 {
-	std::vectot<string> inputDataForTesting{"{ BATTERYAPMS:6, BATTERYTEMPERATURE:149}",
+	std::vector<string> inputDataForTesting{"{ BATTERYAPMS:6, BATTERYTEMPERATURE:149}",
 	                                        "{ BATTERYAPMS:11, BATTERYTEMPERATURE:131}",
 	                                        "{ BATTERYAPMS:3, BATTERYTEMPERATURE:72}",
 	                                        "{ BATTERYAPMS:1, BATTERYTEMPERATURE:100}",
