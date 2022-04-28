@@ -66,13 +66,14 @@ void Receiver::computeStatics()
 	std::vector<int> batteryAmpsList = extractBattertyAmpsReadings();
 	std::vector<int> batteryTemperatureList = extractBattertyTemperatureReadings();
 	
+	double 
 	m_batteryAmpsStats.m_maxValue = *max_element(batteryAmpsList.begin(), batteryAmpsList.end());
 	m_batteryAmpsStats.m_minValue = *min_element(batteryAmpsList.begin(), batteryAmpsList.end());
-	m_batteryAmpsStats.m_averageValue = accumulate((batteryAmpsList.end() - 5), batteryAmpsList.end(), 0)/5;
+	m_batteryAmpsStats.m_averageValue = accumulate((batteryAmpsList.end() - 5), batteryAmpsList.end(), 0)/5.0;
 	
 	m_batteryTemperatureStats.m_maxValue = *max_element(batteryTemperatureList.begin(), batteryTemperatureList.end());
 	m_batteryTemperatureStats.m_minValue = *min_element(batteryTemperatureList.begin(), batteryTemperatureList.end());
-	m_batteryTemperatureStats.m_averageValue = accumulate((batteryTemperatureList.end() - 5), batteryTemperatureList.end(), 0)/5;
+	m_batteryTemperatureStats.m_averageValue = double(accumulate((batteryTemperatureList.end() - 5), batteryTemperatureList.end(), 0))/5.0;
 }
 
 void Receiver::printStatisticsOnConsole()const
